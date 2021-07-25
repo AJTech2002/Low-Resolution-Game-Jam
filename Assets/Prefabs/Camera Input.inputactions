@@ -1,0 +1,33 @@
+{
+    "name": "Camera Input",
+    "maps": [
+        {
+            "name": "Camera Input",
+            "id": "46a210df-27fe-40c7-a9ea-8ffebbf65fbd",
+            "actions": [
+                {
+                    "name": "Rotate",
+                    "type": "Value",
+                    "id": "ec982f09-bfc0-4739-b43c-65fed59c997a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "60ed32a9-8502-4905-9a24-88221e14cfc4",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
