@@ -926,6 +926,10 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7750566604326853500, guid: 872e43c9de9894a4bb7c1acca53500ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd3b79c5fd569284a9536fb82e4c049d, type: 2}
     - target: {fileID: 7750566604326853501, guid: 872e43c9de9894a4bb7c1acca53500ee, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
@@ -2198,6 +2202,10 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7750566604326853500, guid: 872e43c9de9894a4bb7c1acca53500ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd3b79c5fd569284a9536fb82e4c049d, type: 2}
     - target: {fileID: 7750566604326853501, guid: 872e43c9de9894a4bb7c1acca53500ee, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -2259,6 +2267,10 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7750566604326853500, guid: 872e43c9de9894a4bb7c1acca53500ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd3b79c5fd569284a9536fb82e4c049d, type: 2}
     - target: {fileID: 7750566604326853501, guid: 872e43c9de9894a4bb7c1acca53500ee, type: 3}
       propertyPath: m_Name
       value: Enemy (3)
@@ -2601,6 +2613,10 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7750566604326853500, guid: 872e43c9de9894a4bb7c1acca53500ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd3b79c5fd569284a9536fb82e4c049d, type: 2}
     - target: {fileID: 7750566604326853501, guid: 872e43c9de9894a4bb7c1acca53500ee, type: 3}
       propertyPath: m_Name
       value: Enemy
