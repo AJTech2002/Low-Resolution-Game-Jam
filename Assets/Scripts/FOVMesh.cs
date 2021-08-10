@@ -28,6 +28,27 @@ public class FOVMesh : MonoBehaviour
     public float edgeDistanceThreshold;
     public float viewRadius;
 
+    public float generalViewAngle = 80;
+    public float generalViewRadius = 10;
+    public float torchViewAngle;
+    public float torchViewRadius;
+
+    private bool useDot = true;
+
+    public void PickupTorch ()
+    {
+        useDot = false;
+        viewAngle = torchViewAngle;
+        viewRadius = torchViewRadius;
+    }
+
+    public void RemoveTorch ()
+    {
+        useDot = true;
+        viewAngle = generalViewAngle;
+        viewRadius = generalViewRadius;
+    }
+
     void DrawFieldOfView ()
     {
         int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
@@ -105,7 +126,9 @@ public class FOVMesh : MonoBehaviour
         if (hit.collider != null)
         {
             //Modification: For Cutaway, use Vector3 Dot to ensure the intensity of the cutaway is based on how 'much' the player is looking at it; looks more natural
-            return new ViewCastInfo(true, new Vector3(hit.point.x, hit.point.y, transform.position.z) + pointer.forward * maskCutawayDistance * Vector3.Dot(pointer.forward, dir), hit.distance, globalAngle);
+            float maskFactor = (useDot) ? Vector3.Dot(pointer.forward, dir) : 0.2f;
+            Vector3 dirPush = (useDot) ? pointer.forward : dir;
+            return new ViewCastInfo(true, new Vector3(hit.point.x, hit.point.y, transform.position.z) + dirPush * maskCutawayDistance * maskFactor, hit.distance, globalAngle);
 
         }
         else {

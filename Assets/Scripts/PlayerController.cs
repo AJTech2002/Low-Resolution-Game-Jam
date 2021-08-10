@@ -6,14 +6,45 @@ public class PlayerController : MonoBehaviour
 {
     public float maxSpeed;
     public Camera useCamera;
-    public float speed;
+    private float speed;
+    public float walkSpeed;
+    public float sprintSpeed;
+    [Header("SFX")]
+    public AudioSource source;
+    public List<AudioClip> footSteps;
+    public float delay = 0.8f;
+    private float timeDelay = 0f;
+
     public Transform pointer;
     Vector3 mousePos;
     // Update is called once per frame
     
-    
+    private void Awake ()
+    {
+        speed = sprintSpeed;
+    }
+
+    public float torchPickupDuration = 10;
+    private float currentTorchPickup = 0f;
+    private bool pickedUpTorch;
+    private void PickupTorch ()
+    {
+        pickedUpTorch = true;
+        currentTorchPickup = 0f;
+        GetComponent<FOVMesh>().PickupTorch();
+    }
+
     void Update()
     {
+        if (pickedUpTorch)
+        {
+            currentTorchPickup += Time.deltaTime;
+            if (currentTorchPickup >= torchPickupDuration)
+            {
+                pickedUpTorch = false;
+                GetComponent<FOVMesh>().RemoveTorch();
+            }
+        }
 
         mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
         Vector3 lookPos = useCamera.ScreenToWorldPoint(mousePos);
@@ -23,20 +54,53 @@ public class PlayerController : MonoBehaviour
 
         if (Vector3.Distance(lookPos, transform.position) >= 0.2f)
         {
-            Debug.DrawLine(transform.position, lookPos, Color.red, 0.1f);
             lookPos = lookPos - transform.position;
             float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-
+        bool isMoving = false;
         Vector3 movement = new Vector3(0,-Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+        isMoving = movement.magnitude > 0;
         movement = pointer.TransformDirection(movement);
         movement *= Time.deltaTime * speed ;
 
         movement = Vector3.ClampMagnitude(movement, maxSpeed);
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = walkSpeed;
+        }
+        
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            speed = sprintSpeed;
+        }
+
+        if (speed == sprintSpeed && isMoving)
+        {
+            timeDelay += Time.deltaTime;
+            if (timeDelay >= delay)
+            {
+                source.clip = footSteps[Random.Range(0, footSteps.Count)];
+                source.Play();
+                timeDelay = 0f;
+            }
+        }
+        else {
+            source.Stop();
+        }
+
 
         transform.position += movement;
 
+    }
+
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.transform.CompareTag("Torch"))
+        {
+            PickupTorch();
+            GameObject.Destroy(col.transform.gameObject);
+        }
     }
 }
