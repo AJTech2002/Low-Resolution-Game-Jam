@@ -31,6 +31,18 @@ public class Enemy : MonoBehaviour
 
         source.panStereo = spread;
         source.volume = 1-(Mathf.Clamp(dif.magnitude-source.minDistance, 0, source.maxDistance)/(source.maxDistance-source.minDistance));
+        
+        Vector3 mousePos = new Vector3(playerRef.position.x, playerRef.position.y, 0);
+        
+        mousePos.z = transform.position.z;
+
+
+        if (Vector3.Distance(mousePos, transform.position) >= 0.2f)
+        {
+            mousePos = mousePos - transform.position;
+            float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
 
     }
 
