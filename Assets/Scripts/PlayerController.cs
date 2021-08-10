@@ -15,6 +15,14 @@ public class PlayerController : MonoBehaviour
     public float delay = 0.8f;
     private float timeDelay = 0f;
 
+    public bool isWalking {
+        get {
+            return speed == walkSpeed;
+        }
+    }
+
+    public bool isMoving = false;
+
     public Transform pointer;
     Vector3 mousePos;
     // Update is called once per frame
@@ -54,11 +62,11 @@ public class PlayerController : MonoBehaviour
 
         if (Vector3.Distance(lookPos, transform.position) >= 0.2f)
         {
-            lookPos = lookPos - transform.position;
+            lookPos = lookPos - useCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0),Camera.MonoOrStereoscopicEye.Mono);
             float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-        bool isMoving = false;
+       
         Vector3 movement = new Vector3(0,-Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
         isMoving = movement.magnitude > 0;
         movement = pointer.TransformDirection(movement);
