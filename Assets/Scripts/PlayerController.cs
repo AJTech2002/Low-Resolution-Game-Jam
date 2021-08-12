@@ -105,13 +105,18 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.transform.CompareTag("Torch"))
-        {
+        if (col.transform.CompareTag("Torch")) {
             PickupTorch();
             GameObject.Destroy(col.transform.gameObject);
         } else if (col.transform.CompareTag("Key")) {
             keyManager.PickupKey();
             GameObject.Destroy(col.transform.gameObject);
+        } else if (col.transform.CompareTag("Door")) {
+            if (!col.GetComponent<Door>().getIsOpen()) {
+                if (keyManager.UseKey()) {
+                    col.GetComponent<Door>().OpenDoor();
+                }
+            }
         }
     }
 }

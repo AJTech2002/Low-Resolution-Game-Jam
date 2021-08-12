@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Torch
   - Key
+  - Door
   layers:
   - Default
   - TransparentFX

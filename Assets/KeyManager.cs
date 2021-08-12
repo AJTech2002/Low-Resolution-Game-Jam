@@ -37,9 +37,18 @@ public class KeyManager : MonoBehaviour
         }
     }
 
-    public void UseKey() {
-        GameObject.Destroy(keyIndicators[keys - 1]);
-        keyIndicators[keys - 1] = null;
-        keys--;
+    public int NumberOfKeys() {
+        return keys;
+    }
+
+    public bool UseKey() {
+        if (keys > 0) {
+            GameObject.Destroy(keyIndicators[keys - 1]);
+            keyIndicators[keys - 1] = null;
+            keys--;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
