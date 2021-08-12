@@ -378,8 +378,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 4
-  speed: 3.94
+  useCamera: {fileID: 0}
+  walkSpeed: 0
+  sprintSpeed: 0
+  source: {fileID: 0}
+  footSteps: []
+  delay: 0.8
+  isMoving: 0
   pointer: {fileID: 110862647}
+  torchPickupDuration: 10
 --- !u!58 &5637407176204174031
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -434,8 +441,13 @@ MonoBehaviour:
     m_Bits: 128
   maskCutawayDistance: 0.5
   viewMeshFilter: {fileID: 677703273}
+  pointer: {fileID: 0}
   meshResolution: 1
   viewAngle: 78.37
   edgeDistanceThreshold: 1
   viewRadius: 34.85
+  generalViewAngle: 80
+  generalViewRadius: 10
+  torchViewAngle: 0
+  torchViewRadius: 0
   edgeResolution: 2
