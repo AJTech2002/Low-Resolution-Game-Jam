@@ -111,6 +111,11 @@ public class Enemy : MonoBehaviour
             canSeePlayer = false;
         }
 
+        if (Vector3.Distance(playerRef.position,transform.position) <= 0.9f && Vector3.Dot(transform.right, dif) >= 0.5f)
+        {
+            GameManager.PlayerDeath();
+        }
+
         if (canSeePlayer && canHearPlayer || canSeePlayer)
         {
             rendererObj.materials[0].SetColor("_Color", seen);
@@ -177,8 +182,7 @@ public class Enemy : MonoBehaviour
     IEnumerator BeginChasing ()
     {
         //Give time for player to stop walking near enemies
-        if (canHearPlayer && !canSeePlayer)
-        yield return new WaitForSeconds(0.5f);
+
         float lostPlayerDuration = 0f;
         Vector3 lastKnownPosition = new Vector3();
         while (currentEnemyState == EnemyState.Chasing)
@@ -202,7 +206,7 @@ public class Enemy : MonoBehaviour
                 agent.SetDestination(lastKnownPosition);
                 LookAt(agent.steeringTarget);
 
-                if (Vector3.Distance(transform.position,lastKnownPosition) <= 0.7f)
+                if (Vector3.Distance(transform.position,lastKnownPosition) <= 1f)
                     lostPlayerDuration = giveUpTime;
 
                 lostPlayerDuration += Time.deltaTime;

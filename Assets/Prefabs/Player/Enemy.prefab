@@ -708,9 +708,9 @@ MonoBehaviour:
   viewMeshFilter: {fileID: 1951561155}
   pointer: {fileID: 1107838025}
   meshResolution: 1
-  viewAngle: 70
+  viewAngle: 75
   edgeDistanceThreshold: 0.1
-  viewRadius: 4.5
+  viewRadius: 4
   generalViewAngle: 70
   generalViewRadius: 5
   torchViewAngle: 0

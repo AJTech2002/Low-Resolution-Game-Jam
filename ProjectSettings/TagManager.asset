@@ -8,6 +8,8 @@ TagManager:
   - Key
   - Door
   - Enemy
+  - King
+  - RenderCamera
   layers:
   - Default
   - TransparentFX

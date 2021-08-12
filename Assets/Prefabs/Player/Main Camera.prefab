@@ -90,4 +90,5 @@ MonoBehaviour:
   radiusOfControl: 1.5
   smoothSpeed: 4.5
   camera: {fileID: 3058946737849179502}
+  controller: {fileID: 0}
   trackingObject: {fileID: 0}

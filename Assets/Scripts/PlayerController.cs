@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
     private void Awake ()
     {
         speed = sprintSpeed;
+        useCamera = GameObject.FindGameObjectWithTag("RenderCamera").GetComponent<Camera>();
+
+        if (!useCamera) Debug.LogError("You dont have the World renderer my friend");
     }
 
     public float torchPickupDuration = 10;
@@ -110,13 +113,11 @@ public class PlayerController : MonoBehaviour
             PickupTorch();
             GameObject.Destroy(col.transform.gameObject);
         } else if (col.transform.CompareTag("Key")) {
-            keyManager.PickupKey();
+            GameObject.FindObjectOfType<KeyManager>().PickupKey();
             GameObject.Destroy(col.transform.gameObject);
         } else if (col.transform.CompareTag("Door")) {
             if (!col.GetComponent<Door>().getIsOpen()) {
-                if (keyManager.UseKey()) {
-                    col.GetComponent<Door>().OpenDoor();
-                }
+                col.GetComponent<Door>().OpenDoor();
             }
         }
     }

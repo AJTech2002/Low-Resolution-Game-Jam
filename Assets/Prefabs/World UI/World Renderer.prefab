@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6f8e4a1429eace140a66d0a3ee310e5b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fa16c3ceebd6f940b2dc60cfa6a3ffd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -368,10 +368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 64, y: 64}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -478,6 +478,10 @@ PrefabInstance:
     - target: {fileID: 5409036337529943009, guid: a83d2c3923b0205458ae0d2e0f3a8303, type: 3}
       propertyPath: m_Name
       value: Render Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409036337529943009, guid: a83d2c3923b0205458ae0d2e0f3a8303, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5409036337529943022, guid: a83d2c3923b0205458ae0d2e0f3a8303, type: 3}
       propertyPath: m_RootOrder

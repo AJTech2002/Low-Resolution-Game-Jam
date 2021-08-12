@@ -26,6 +26,11 @@ public class Attacking : MonoBehaviour
                     {
                         GameObject.Destroy(hit.transform.gameObject);
                     }
+                    else if (hit.transform.CompareTag("King"))
+                    {
+                        GameObject.Destroy(hit.transform.gameObject);
+                        GameManager.ProgressScene();
+                    }
                 }
             }
         }

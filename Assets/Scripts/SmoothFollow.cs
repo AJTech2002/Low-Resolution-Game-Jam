@@ -19,38 +19,47 @@ public class SmoothFollow : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+        
     }
+    
 
     private void Update()
     {
-        Vector3 expectedPosition = new Vector3(trackingObject.position.x, trackingObject.position.y, transform.position.z);
+        if (trackingObject == null) trackingObject = GameObject.FindGameObjectWithTag("Player").transform;
+        if (controller == null) controller = GameObject.FindObjectOfType<PlayerController>();
 
-        if (!exceededControl)
+        if (trackingObject && controller)
         {
-            if (Vector3.Distance(expectedPosition, transform.position) >= radiusOfControl)
+            Vector3 expectedPosition = new Vector3(trackingObject.position.x, trackingObject.position.y, transform.position.z);
+
+            if (!exceededControl)
             {
-                exceededControl = true;
+                if (Vector3.Distance(expectedPosition, transform.position) >= radiusOfControl)
+                {
+                    exceededControl = true;
+                }
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, expectedPosition, smoothSpeed * Time.deltaTime);
+
+                if (Vector3.Distance(expectedPosition, transform.position) <= 0.1f)
+                {
+                    exceededControl = false;
+                }
+            }
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 12f, 10 * Time.deltaTime);
+                controller.canMove = false;
+            }
+            else
+            {
+                camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 5f, 10 * Time.deltaTime);
+                controller.canMove = true;
             }
         }
-        else {
-            transform.position = Vector3.Lerp(transform.position, expectedPosition, smoothSpeed*Time.deltaTime);
-
-            if (Vector3.Distance(expectedPosition, transform.position) <= 0.1f)
-            {
-                exceededControl = false;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 12f, 10*Time.deltaTime);
-            controller.canMove = false;
-        }
-        else {
-            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize,5f, 10*Time.deltaTime);
-            controller.canMove = true;
-        }
-
     }
 
 }
