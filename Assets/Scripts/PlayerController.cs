@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public List<AudioClip> footSteps;
     public float delay = 0.8f;
     private float timeDelay = 0f;
+    public KeyManager keyManager;
 
     public bool isWalking {
         get {
@@ -97,7 +98,6 @@ public class PlayerController : MonoBehaviour
             source.Stop();
         }
 
-
         transform.position += movement;
 
     }
@@ -108,6 +108,9 @@ public class PlayerController : MonoBehaviour
         if (col.transform.CompareTag("Torch"))
         {
             PickupTorch();
+            GameObject.Destroy(col.transform.gameObject);
+        } else if (col.transform.CompareTag("Key")) {
+            keyManager.PickupKey();
             GameObject.Destroy(col.transform.gameObject);
         }
     }
