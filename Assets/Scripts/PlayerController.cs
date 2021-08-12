@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float delay = 0.8f;
     private float timeDelay = 0f;
     public KeyManager keyManager;
-
+    public bool canMove = true;
     public bool isWalking {
         get {
             return speed == walkSpeed;
@@ -68,9 +68,9 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
        
-        Vector3 movement = new Vector3(0,-Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-        isMoving = movement.magnitude > 0;
-        movement = pointer.TransformDirection(movement);
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"),0);
+        isMoving = movement.magnitude > 0 && canMove;
+        //movement = pointer.TransformDirection(movement);
         movement *= Time.deltaTime * speed ;
 
         movement = Vector3.ClampMagnitude(movement, maxSpeed);
@@ -97,7 +97,8 @@ public class PlayerController : MonoBehaviour
         else {
             source.Stop();
         }
-
+        
+        if (canMove)
         transform.position += movement;
 
     }

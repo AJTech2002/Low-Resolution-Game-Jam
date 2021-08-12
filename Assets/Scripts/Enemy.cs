@@ -24,13 +24,23 @@ public class Enemy : MonoBehaviour
     public float minFootstepDelay = 0.8f;
     public float maxFootstepDelay = 1.2f;
     public AudioSource source;
+
+    [Header("Speeds")]
     public float lookSpeed = 3;
+    public float hearAgentSpeed;
+    public float seeAgentSpeed;
 
     [Header("Detection")]
     public float playerDetectionRadius;
     public float playerDetectionFOV;
     public float giveUpTime = 5;
 
+    public MeshRenderer rendererObj;
+    public Color okay;
+    public Color seen;
+    public Color hear;
+
+    [Header("Debug")]
     public bool canHearPlayer = false;
     public bool canSeePlayer = false;
 
@@ -74,6 +84,7 @@ public class Enemy : MonoBehaviour
         {
             canHearPlayer = true;
             //Enemy can hear you
+        
 
             if (currentEnemyState != EnemyState.Chasing)
             {
@@ -88,6 +99,7 @@ public class Enemy : MonoBehaviour
         if (dif.magnitude <= playerDetectionRadius && Vector3.Angle(transform.right,dif) <= playerDetectionFOV/2 && hit.transform == playerRef)
         {
             canSeePlayer = true;
+
             if (currentEnemyState != EnemyState.Chasing)
             {
                 currentEnemyState = EnemyState.Chasing;
@@ -95,7 +107,24 @@ public class Enemy : MonoBehaviour
             }
         }
         else {
+            
             canSeePlayer = false;
+        }
+
+        if (canSeePlayer && canHearPlayer || canSeePlayer)
+        {
+            rendererObj.materials[0].SetColor("_Color", seen);
+        }
+        else if (canHearPlayer && !canSeePlayer)
+        {
+            rendererObj.materials[0].SetColor("_Color", hear);
+        }
+        else if (!canHearPlayer && !canSeePlayer)
+        {
+            rendererObj.materials[0].SetColor("_Color", okay);
+        }
+        else {
+             rendererObj.materials[0].SetColor("_Color", okay);
         }
 
         vel = transform.position - lastPos;
@@ -148,31 +177,48 @@ public class Enemy : MonoBehaviour
     IEnumerator BeginChasing ()
     {
         //Give time for player to stop walking near enemies
+        if (canHearPlayer && !canSeePlayer)
         yield return new WaitForSeconds(0.5f);
         float lostPlayerDuration = 0f;
+        Vector3 lastKnownPosition = new Vector3();
         while (currentEnemyState == EnemyState.Chasing)
         {
             yield return new WaitForEndOfFrame();
             if (canSeePlayer || canHearPlayer)
             {
+
+                if (canHearPlayer) agent.speed = hearAgentSpeed;
+                if (canSeePlayer) agent.speed = seeAgentSpeed;
+
+                lastKnownPosition = playerRef.position;
+
                 lostPlayerDuration = 0f;
                 agent.SetDestination(playerRef.position);
                 LookAt(agent.steeringTarget);
             }
             else {
-                agent.SetDestination(playerRef.position);
+                if (lostPlayerDuration <= 1.5f) lastKnownPosition = playerRef.position;
+
+                agent.SetDestination(lastKnownPosition);
                 LookAt(agent.steeringTarget);
+
+                if (Vector3.Distance(transform.position,lastKnownPosition) <= 0.7f)
+                    lostPlayerDuration = giveUpTime;
+
                 lostPlayerDuration += Time.deltaTime;
             }
 
             if (lostPlayerDuration >= giveUpTime)
             {
-                Debug.Log("LOST PLAYER");
+
                 currentEnemyState = EnemyState.Patrolling;
                 SwitchState();
                 break;
             }
         }
+        
+        currentEnemyState = EnemyState.Patrolling;
+                SwitchState();
         
     }
 
@@ -186,8 +232,8 @@ public class Enemy : MonoBehaviour
             if (enemyPath != null && enemyPath.path.Count > 0)
             {
                 yield return new WaitForEndOfFrame();
-                
-                
+                agent.speed = hearAgentSpeed;
+
                 if (agent.path.corners.Length > 0)
                     newSteeringTarget = Vector3.Lerp(newSteeringTarget,agent.steeringTarget,5*Time.deltaTime);
                 else

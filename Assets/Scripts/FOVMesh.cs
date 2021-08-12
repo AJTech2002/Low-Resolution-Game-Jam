@@ -9,6 +9,7 @@ public class FOVMesh : MonoBehaviour
     public float maskCutawayDistance;
     public MeshFilter viewMeshFilter;
     public Transform pointer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class FOVMesh : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+     
         DrawFieldOfView();
     }
 

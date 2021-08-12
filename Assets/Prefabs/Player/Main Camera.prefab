@@ -63,7 +63,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 215
+    m_Bits: 727
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: fd1c37f8f9ba80d41a470683b36337ef, type: 2}
   m_TargetDisplay: 0
@@ -88,5 +88,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radiusOfControl: 1.5
-  smoothSpeed: 3
+  smoothSpeed: 4.5
+  camera: {fileID: 3058946737849179502}
   trackingObject: {fileID: 0}

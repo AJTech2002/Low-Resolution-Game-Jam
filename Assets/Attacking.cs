@@ -5,6 +5,7 @@ using UnityEngine;
 public class Attacking : MonoBehaviour
 {
     public LayerMask mask;
+    public Animation animation;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +16,16 @@ public class Attacking : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
-        Debug.Log("test");
-            RaycastHit2D hit = Physics2D.Raycast(transform.position,transform.forward,10,mask);
-            Debug.DrawRay(transform.position, transform.forward, Color.green, 10, false);
+        
+            RaycastHit2D hit = Physics2D.Raycast(transform.position,transform.right,2,mask);
+            Debug.DrawRay(transform.position, transform.right, Color.green, 2, false);
+            animation.Play();
             if (hit) {
                 if (hit.transform != null) {
-                    Debug.Log(hit.collider.gameObject.tag);
+                    if (hit.transform.CompareTag("Enemy") && Vector3.Dot(transform.right,hit.transform.right) > 0.7f)
+                    {
+                        GameObject.Destroy(hit.transform.gameObject);
+                    }
                 }
             }
         }

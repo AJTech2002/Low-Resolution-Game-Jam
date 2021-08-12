@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeyManager : MonoBehaviour
 {
-    int keys = 0;
+    public int keys = 0;
     public GameObject mainCamera;
     public GameObject keyIndicator;
     public GameObject[] keyIndicators = new GameObject[4];

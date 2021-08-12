@@ -7,13 +7,24 @@ public class Door : MonoBehaviour
     bool isOpen = false;
 
     public void OpenDoor() {
-        if (!isOpen) {
-            gameObject.GetComponent<Animation>().Play();
-            isOpen = true;
+
+        if (GameObject.FindObjectOfType<KeyManager>().NumberOfKeys() > 0)
+        {
+            if (!isOpen)
+            {
+                gameObject.GetComponent<Animation>().Play();
+                isOpen = true;
+                GameObject.FindObjectOfType<KeyManager>().UseKey();
+            }
         }
     }
 
     public bool getIsOpen() {
         return isOpen;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player")) OpenDoor();
     }
 }

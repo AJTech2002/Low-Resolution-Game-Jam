@@ -6,7 +6,11 @@ public class SmoothFollow : MonoBehaviour
 {
     public float radiusOfControl;
     public float smoothSpeed;
- 
+
+    public Camera camera;
+
+    public PlayerController controller;
+
     public Transform trackingObject;
 
     bool exceededControl = false;
@@ -35,6 +39,16 @@ public class SmoothFollow : MonoBehaviour
             {
                 exceededControl = false;
             }
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 12f, 10*Time.deltaTime);
+            controller.canMove = false;
+        }
+        else {
+            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize,5f, 10*Time.deltaTime);
+            controller.canMove = true;
         }
 
     }
