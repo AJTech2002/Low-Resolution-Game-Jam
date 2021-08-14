@@ -34,3 +34,4 @@ sysinfo.txt
 *.unitypackage
 
 Logs/
+Logs/AssetImportWorker0.log
