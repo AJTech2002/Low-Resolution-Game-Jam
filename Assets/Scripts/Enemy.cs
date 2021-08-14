@@ -201,7 +201,7 @@ public class Enemy : MonoBehaviour
 
             Debug.DrawLine(transform.position, playerRef.position, Color.red,0.1f);
 
-            Debug.Log(dif.magnitude + " but " +  (hit.transform == playerRef));
+          
             if (dif.magnitude <= playerDetectionRadius && Vector3.Angle(transform.right,dif) <= playerDetectionFOV/2 && hit.transform == playerRef)
             {
                 canSeePlayer = true;

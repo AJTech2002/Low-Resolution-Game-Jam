@@ -6219,14 +6219,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5581620063296831889, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
-      propertyPath: death.sound
-      value: 
-      objectReference: {fileID: 8300000, guid: b5d86f1833d8f994b81df98d5713a9ab, type: 3}
-    - target: {fileID: -5581620063296831889, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
-      propertyPath: death.defaultVolume
-      value: 0.47
-      objectReference: {fileID: 0}
     - target: {fileID: 327987059816255691, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
       propertyPath: m_RootOrder
       value: 1

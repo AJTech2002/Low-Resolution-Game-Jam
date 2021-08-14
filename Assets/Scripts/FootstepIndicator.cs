@@ -13,7 +13,6 @@ public class FootstepIndicator : MonoBehaviour
 
     private void Start ()
     {
-        
         foreach (Enemy e in GameObject.FindObjectsOfType<Enemy>())
         {
             enemies.Add(e);
@@ -32,6 +31,7 @@ public class FootstepIndicator : MonoBehaviour
             if (e.currentEnemyState == EnemyState.Chasing)
             {
                 indicate3 = true;
+                
             }
         }
         
@@ -44,6 +44,14 @@ public class FootstepIndicator : MonoBehaviour
         }
         else {
             searching.enabled = false;
+        }
+
+        if (indicate3 || indicate2) 
+        {
+            GameObject.FindObjectOfType<BackgroundMusic>().PlayChase();
+        } 
+        else {
+            GameObject.FindObjectOfType<BackgroundMusic>().PlayChill();
         }
     }
 }
