@@ -304,7 +304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5637407176204174019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: 5.91, z: -2.0758624}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5637407175641053205}
@@ -384,6 +384,8 @@ MonoBehaviour:
   source: {fileID: 0}
   footSteps: []
   delay: 0.8
+  keyManager: {fileID: 0}
+  canMove: 1
   isMoving: 0
   pointer: {fileID: 110862647}
   torchPickupDuration: 10
