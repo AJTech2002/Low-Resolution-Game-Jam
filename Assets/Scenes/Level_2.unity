@@ -486,7 +486,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4538878143118360662, guid: ae059986e04cf264c9d1bc6b831a0a22, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4538878143118360662, guid: ae059986e04cf264c9d1bc6b831a0a22, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6668,7 +6668,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1438356817
 GameObject:
@@ -8801,7 +8801,7 @@ Transform:
   - {fileID: 1013429113}
   - {fileID: 1681765079}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1986131227 stripped
 Transform:
@@ -8976,7 +8976,7 @@ MonoBehaviour:
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: aca10d5c52a83904d9f2e178e112cdb5, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4bf0b3b5c1e404247829fd01284a25e7, type: 2}
 --- !u!1 &2014042989
 GameObject:
   m_ObjectHideFlags: 0
@@ -9762,7 +9762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3058946737849179503, guid: d154ff4511f43d24392182a16927aa7a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3058946737849179503, guid: d154ff4511f43d24392182a16927aa7a, type: 3}
       propertyPath: m_LocalPosition.x

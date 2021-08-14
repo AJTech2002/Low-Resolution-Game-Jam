@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         currentScene = levelNames.IndexOf(SceneManager.GetActiveScene().name);
             sceneSpawn = GameObject.FindGameObjectWithTag("Respawn").transform;
             if (sceneSpawn == null) Debug.LogError("Scene doesn't have a spawn point");
+        
+        if (this != null && GetComponent<AudioSource>() != null)
         spawn.PlayFromSource(GetComponent<AudioSource>(), 0, 3f);
         if (GameObject.FindObjectOfType<PlayerController>() == null)
         {
