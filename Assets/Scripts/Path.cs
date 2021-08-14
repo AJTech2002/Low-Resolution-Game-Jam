@@ -49,6 +49,7 @@ public class Path : MonoBehaviour
     {
         if (!ValidIndex(i)) return false;
 
+        Debug.Log(Vector3.Distance(pos, path[i]));
         if (Vector3.Distance(pos, path[i]) <= 0.9f)
         {
             return true;
