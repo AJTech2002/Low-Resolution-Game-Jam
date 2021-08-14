@@ -25,6 +25,8 @@ public class FOVMesh : MonoBehaviour
         DrawFieldOfView();
     }
 
+    public bool playerInLine;
+
     public float meshResolution;
     public float viewAngle;
     public float edgeDistanceThreshold;
@@ -127,6 +129,8 @@ public class FOVMesh : MonoBehaviour
         
         if (hit.collider != null)
         {
+            if (hit.transform.CompareTag("Player")) playerInLine = true;
+            else playerInLine = false;
             //Modification: For Cutaway, use Vector3 Dot to ensure the intensity of the cutaway is based on how 'much' the player is looking at it; looks more natural
             float maskFactor = (useDot) ? Vector3.Dot(pointer.forward, dir) : 0.2f;
             Vector3 dirPush = (useDot) ? pointer.forward : dir;
@@ -134,6 +138,7 @@ public class FOVMesh : MonoBehaviour
 
         }
         else {
+            playerInLine = false;
             return new ViewCastInfo(false, transform.position+viewRadius*dir, viewRadius, globalAngle);
         }
     }

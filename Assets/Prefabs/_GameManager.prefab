@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 327987059816255691}
   - component: {fileID: -5581620063296831889}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: _GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,3 +49,5 @@ MonoBehaviour:
   - Level_1
   - Level_2
   - Level_3
+  - END
+  - MNU

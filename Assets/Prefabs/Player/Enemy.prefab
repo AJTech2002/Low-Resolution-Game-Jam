@@ -546,7 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seeMask:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 192
   footSteps:
   - {fileID: 8300000, guid: d8f922f2b96cc6d49beacc0e86771afe, type: 3}
   - {fileID: 8300000, guid: 4c4fd039e1050d140bd1f2358d35c529, type: 3}
@@ -707,6 +707,7 @@ MonoBehaviour:
   maskCutawayDistance: 0.01
   viewMeshFilter: {fileID: 1951561155}
   pointer: {fileID: 1107838025}
+  playerInLine: 0
   meshResolution: 1
   viewAngle: 70
   edgeDistanceThreshold: 0.1

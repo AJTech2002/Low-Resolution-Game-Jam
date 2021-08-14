@@ -75,6 +75,8 @@ public class Enemy : MonoBehaviour
 
         Vector3 dif = playerRef.position - transform.position;
 
+        dif.z = 0f;
+
         float spread = -Vector3.Dot(Vector3.right, dif.normalized);
 
         source.panStereo = spread;
@@ -187,6 +189,30 @@ public class Enemy : MonoBehaviour
         Vector3 lastKnownPosition = new Vector3();
         while (currentEnemyState == EnemyState.Chasing)
         {
+            Vector3 dif = playerRef.position - transform.position;
+            if (dif.magnitude <= playerDetectionRadius && !controller.isWalking && controller.isMoving)
+            {
+                canHearPlayer = true;
+
+            }
+            else canHearPlayer = false;
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dif, playerDetectionRadius, seeMask);
+
+            Debug.DrawLine(transform.position, playerRef.position, Color.red,0.1f);
+
+            Debug.Log(dif.magnitude + " but " +  (hit.transform == playerRef));
+            if (dif.magnitude <= playerDetectionRadius && Vector3.Angle(transform.right,dif) <= playerDetectionFOV/2 && hit.transform == playerRef)
+            {
+                canSeePlayer = true;
+
+            }
+            else {
+                
+                canSeePlayer = false;
+            }
+
+
             yield return new WaitForEndOfFrame();
             if (canSeePlayer || canHearPlayer)
             {
@@ -197,12 +223,13 @@ public class Enemy : MonoBehaviour
                 lastKnownPosition = playerRef.position;
 
                 lostPlayerDuration = 0f;
+                if (agent.isActiveAndEnabled)
                 agent.SetDestination(playerRef.position);
                 LookAt(agent.steeringTarget);
             }
             else {
                 if (lostPlayerDuration <= 0.5f) lastKnownPosition = playerRef.position;
-
+                if (agent.isActiveAndEnabled)
                 agent.SetDestination(lastKnownPosition);
                 LookAt(agent.steeringTarget);
 
@@ -212,7 +239,7 @@ public class Enemy : MonoBehaviour
                 lostPlayerDuration += Time.deltaTime;
             }
 
-            if (lostPlayerDuration >= giveUpTime)
+            if (lostPlayerDuration >= giveUpTime && !(canSeePlayer || canHearPlayer))
             {
 
                 currentEnemyState = EnemyState.Patrolling;
@@ -244,7 +271,8 @@ public class Enemy : MonoBehaviour
                     newSteeringTarget = Vector3.Lerp(newSteeringTarget,enemyPath.path[pathIndex],5*Time.deltaTime);
 
                 LookAt(newSteeringTarget);
-
+                
+                if (agent.isActiveAndEnabled)
                 agent.SetDestination(enemyPath.path[pathIndex]);
                 
                 if (enemyPath.ReachedIndex(pathIndex, transform.position))
@@ -263,6 +291,55 @@ public class Enemy : MonoBehaviour
             source.clip = footSteps[Random.Range(0, footSteps.Count)];
             source.Play();
         }
+    }
+
+}
+
+ //Stores an AudioClip and some functions to use them
+[System.Serializable]
+public class Sound {
+    public AudioClip sound;
+    [Range(0f, 2f)]
+    public float defaultVolume;
+
+    IEnumerator RunIn (float delay, Vector3 position, float volume)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayAt(position, volume, 0f);
+    }
+
+    IEnumerator RunSourceIn (float delay, AudioSource source, float volume)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayFromSource(source, 0f, volume);
+    }
+
+    //Play from a position
+    public void PlayAt (Vector3 position, float volume = -1f, float delay = 0f)
+    {
+        if (volume < 0) volume = defaultVolume;
+        if (sound != null)
+        {
+            if (delay == 0f)
+                AudioSource.PlayClipAtPoint(sound, position, volume);
+            else
+                 GameObject.FindObjectOfType<PlayerController>().StartCoroutine(RunIn(delay, position, volume));
+        }
+
+    }
+    
+    //Play from a source this clip
+    public void PlayFromSource (AudioSource source, float delay=0f, float volume = -1f)
+    {
+        if (volume < 0) volume = defaultVolume;
+        if (sound != null)
+        {
+            if (delay == 0f)
+                source.PlayOneShot(sound, volume);
+            else
+                GameObject.FindObjectOfType<PlayerController>().StartCoroutine(RunSourceIn(delay, source, volume));
+        }
+
     }
 
 }

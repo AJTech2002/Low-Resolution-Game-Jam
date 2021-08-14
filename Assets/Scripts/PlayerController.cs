@@ -26,8 +26,13 @@ public class PlayerController : MonoBehaviour
 
     public Transform pointer;
     Vector3 mousePos;
+
+    [Header("SFX")]
+    public Sound doorOpen;
+    public Sound pickupKey;
+    public Sound torchPickup;
     // Update is called once per frame
-    
+
     private void Awake ()
     {
         speed = sprintSpeed;
@@ -111,12 +116,15 @@ public class PlayerController : MonoBehaviour
     {
         if (col.transform.CompareTag("Torch")) {
             PickupTorch();
+            torchPickup.PlayAt(transform.position);
             GameObject.Destroy(col.transform.gameObject);
         } else if (col.transform.CompareTag("Key")) {
+            pickupKey.PlayAt(transform.position, -1, 0f);
             GameObject.FindObjectOfType<KeyManager>().PickupKey();
             GameObject.Destroy(col.transform.gameObject);
         } else if (col.transform.CompareTag("Door")) {
-            if (!col.GetComponent<Door>().getIsOpen()) {
+            if (!col.GetComponent<Door>().getIsOpen() && GameObject.FindObjectOfType<KeyManager>().NumberOfKeys() > 0) {
+                doorOpen.PlayAt(transform.position, -1, 0.1f);
                 col.GetComponent<Door>().OpenDoor();
             }
         }

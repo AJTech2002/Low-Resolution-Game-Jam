@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public Sound death;
+
     public Transform playerPrefab;
 
     
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded (Scene scene, LoadSceneMode mode)
     {
+        instance = this;
         currentScene = levelNames.IndexOf(SceneManager.GetActiveScene().name);
             sceneSpawn = GameObject.FindGameObjectWithTag("Respawn").transform;
             if (sceneSpawn == null) Debug.LogError("Scene doesn't have a spawn point");
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     public static void PlayerDeath ()
     {
+        instance.death.PlayAt(GameObject.FindObjectOfType<PlayerController>().transform.position, 1);
         instance.Death();
     }
 

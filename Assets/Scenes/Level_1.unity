@@ -5056,11 +5056,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3024525111504571454, guid: 4ce9face25f384f4fa652d2709bdc89e, type: 3}
   m_PrefabInstance: {fileID: 1855717281}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1864257782 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3058946737849179500, guid: d154ff4511f43d24392182a16927aa7a, type: 3}
-  m_PrefabInstance: {fileID: 3058946736571091888}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1880849751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6005,7 +6000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7750566604326853503, guid: 3465f9835d1faec4c9be411ef0cdf61a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7750566604326853503, guid: 3465f9835d1faec4c9be411ef0cdf61a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6224,6 +6219,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5581620063296831889, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
+      propertyPath: death.sound
+      value: 
+      objectReference: {fileID: 8300000, guid: b5d86f1833d8f994b81df98d5713a9ab, type: 3}
+    - target: {fileID: -5581620063296831889, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
+      propertyPath: death.defaultVolume
+      value: 0.47
+      objectReference: {fileID: 0}
     - target: {fileID: 327987059816255691, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6268,10 +6271,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2620322911583928065, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1864257782}
     - target: {fileID: 8724322133023124787, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
       propertyPath: m_Name
       value: _GameManager
@@ -6285,14 +6284,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3058946737849179473, guid: d154ff4511f43d24392182a16927aa7a, type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3058946737849179473, guid: d154ff4511f43d24392182a16927aa7a, type: 3}
-      propertyPath: trackingObject
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3058946737849179500, guid: d154ff4511f43d24392182a16927aa7a, type: 3}
       propertyPath: m_Name
       value: Main Camera

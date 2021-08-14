@@ -415,6 +415,15 @@ MonoBehaviour:
   canMove: 1
   isMoving: 0
   pointer: {fileID: 6704864546906927179}
+  doorOpen:
+    sound: {fileID: 8300000, guid: 27a021c9301facb498c38192f6dab5fc, type: 3}
+    defaultVolume: 0.602
+  pickupKey:
+    sound: {fileID: 8300000, guid: c918559a9ee3c1143a3829eb59cb0f52, type: 3}
+    defaultVolume: 1.127
+  torchPickup:
+    sound: {fileID: 8300000, guid: 6dffbff5c0c996c4198c5407bdc052ea, type: 3}
+    defaultVolume: 0.809
   torchPickupDuration: 10
 --- !u!58 &1382712001432097715
 CircleCollider2D:
@@ -471,6 +480,7 @@ MonoBehaviour:
   maskCutawayDistance: 0.3
   viewMeshFilter: {fileID: 6704864547678732053}
   pointer: {fileID: 6704864546906927179}
+  playerInLine: 0
   meshResolution: 1.2
   viewAngle: 134.9
   edgeDistanceThreshold: 1
@@ -592,6 +602,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 951
   animation: {fileID: 1571808296}
+  enemyKill:
+    sound: {fileID: 8300000, guid: c2434417921155b43a6b2a287c388864, type: 3}
+    defaultVolume: 0.344
+  deathSound:
+    sound: {fileID: 8300000, guid: b5d86f1833d8f994b81df98d5713a9ab, type: 3}
+    defaultVolume: 1.021
+  swing:
+    sound: {fileID: 8300000, guid: c4f18c508475211498e7c737369d66aa, type: 3}
+    defaultVolume: 0.168
+  delay: 0.6
 --- !u!1 &6704864546906927178
 GameObject:
   m_ObjectHideFlags: 0

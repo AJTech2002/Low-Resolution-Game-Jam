@@ -2558,18 +2558,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5581620063296831889, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
-      propertyPath: levelNames.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: -5581620063296831889, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
-      propertyPath: levelNames.Array.data[4]
-      value: END
-      objectReference: {fileID: 0}
-    - target: {fileID: -5581620063296831889, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
-      propertyPath: levelNames.Array.data[5]
-      value: MNU
-      objectReference: {fileID: 0}
     - target: {fileID: 327987059816255691, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2614,6 +2602,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5970642964868530670, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ebe1153664bdb740b886903a74e230e, type: 2}
     - target: {fileID: 8724322133023124787, guid: a305f4ed21ec80249b35a60bd1f01853, type: 3}
       propertyPath: m_Name
       value: _GameManager
