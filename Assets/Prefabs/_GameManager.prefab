@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 327987059816255691}
   - component: {fileID: -5581620063296831889}
-  - component: {fileID: 2620322911583928065}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -47,27 +46,5 @@ MonoBehaviour:
   playerPrefab: {fileID: 1382712001432097724, guid: 9c505966d9459b248b251270d3e1fae0, type: 3}
   levelNames:
   - Nav_mesh
-  - Nav_mesh
---- !u!114 &2620322911583928065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8724322133023124787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d62fb740f63307488a8b0ee8e96cbf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keys: 0
-  mainCamera: {fileID: 0}
-  keyIndicator: {fileID: 3024525111504571453, guid: 8781a81bf16fdde40a91477ff75481fd, type: 3}
-  keyIndicators:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  xOffset: -3.3
-  yOffset: -3.3
-  betweenWidth: 1.4
+  - Level_1
+  - Level_2

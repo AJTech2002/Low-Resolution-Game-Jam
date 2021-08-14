@@ -559,7 +559,7 @@ MonoBehaviour:
   lookSpeed: 5
   hearAgentSpeed: 1.3
   seeAgentSpeed: 3.5
-  playerDetectionRadius: 4
+  playerDetectionRadius: 6
   playerDetectionFOV: 70
   giveUpTime: 8
   rendererObj: {fileID: 1951561156}
@@ -708,11 +708,11 @@ MonoBehaviour:
   viewMeshFilter: {fileID: 1951561155}
   pointer: {fileID: 1107838025}
   meshResolution: 1
-  viewAngle: 75
+  viewAngle: 70
   edgeDistanceThreshold: 0.1
-  viewRadius: 4
+  viewRadius: 5.5
   generalViewAngle: 70
-  generalViewRadius: 5
+  generalViewRadius: 5.5
   torchViewAngle: 0
   torchViewRadius: 0
   edgeResolution: 1

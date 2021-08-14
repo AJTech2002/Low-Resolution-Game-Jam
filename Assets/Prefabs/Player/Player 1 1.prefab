@@ -478,7 +478,7 @@ MonoBehaviour:
   generalViewAngle: 80
   generalViewRadius: 10
   torchViewAngle: 361
-  torchViewRadius: 4
+  torchViewRadius: 10
   edgeResolution: 3
 --- !u!82 &1973988588
 AudioSource:
