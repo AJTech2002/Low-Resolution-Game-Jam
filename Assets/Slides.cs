@@ -7,7 +7,7 @@ public class Slides : MonoBehaviour
     public List<GameObject> slides = new List<GameObject>();
     public int currentSlide;
 
-    private float minDuration = 0.2f;
+    private float minDuration = 0.5f;
     private float dur = 0f;
 
     public UnityEngine.Canvas canvas;

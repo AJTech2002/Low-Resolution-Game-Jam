@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public Sound death;
+    public Sound spawn;
 
     public Transform playerPrefab;
 
@@ -33,10 +34,10 @@ public class GameManager : MonoBehaviour
         currentScene = levelNames.IndexOf(SceneManager.GetActiveScene().name);
             sceneSpawn = GameObject.FindGameObjectWithTag("Respawn").transform;
             if (sceneSpawn == null) Debug.LogError("Scene doesn't have a spawn point");
+        spawn.PlayFromSource(GetComponent<AudioSource>(), 0, 3f);
         if (GameObject.FindObjectOfType<PlayerController>() == null)
         {
             
-
             Transform.Instantiate(playerPrefab, sceneSpawn.position, Quaternion.identity);
         }
     }

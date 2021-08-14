@@ -49,6 +49,9 @@ MonoBehaviour:
   death:
     sound: {fileID: 8300000, guid: b5d86f1833d8f994b81df98d5713a9ab, type: 3}
     defaultVolume: 0.47
+  spawn:
+    sound: {fileID: 8300000, guid: ed0d7f7db364b474791d06e26e650b91, type: 3}
+    defaultVolume: 1.097
   playerPrefab: {fileID: 1382712001432097724, guid: 9c505966d9459b248b251270d3e1fae0, type: 3}
   levelNames:
   - MNU
