@@ -25,6 +25,8 @@ public class SmoothFollow : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) Cursor.lockState = CursorLockMode.None;
+
         if (trackingObject == null) trackingObject = GameObject.FindGameObjectWithTag("Player").transform;
         if (controller == null) controller = GameObject.FindObjectOfType<PlayerController>();
 

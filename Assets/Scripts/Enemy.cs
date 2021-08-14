@@ -201,7 +201,7 @@ public class Enemy : MonoBehaviour
                 LookAt(agent.steeringTarget);
             }
             else {
-                if (lostPlayerDuration <= 1.5f) lastKnownPosition = playerRef.position;
+                if (lostPlayerDuration <= 0.5f) lastKnownPosition = playerRef.position;
 
                 agent.SetDestination(lastKnownPosition);
                 LookAt(agent.steeringTarget);

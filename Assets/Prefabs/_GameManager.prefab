@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1382712001432097724, guid: 9c505966d9459b248b251270d3e1fae0, type: 3}
   levelNames:
-  - Nav_mesh
+  - MNU
   - Level_1
   - Level_2
+  - Level_3
