@@ -337,7 +337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: JUSTIN
+  m_text: JUSTIN McHugh
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e21297efe8aaf494cb1791b2b1aa94fd, type: 2}
   m_sharedMaterial: {fileID: -2847293975174076408, guid: e21297efe8aaf494cb1791b2b1aa94fd, type: 2}

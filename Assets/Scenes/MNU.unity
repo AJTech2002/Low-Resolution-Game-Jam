@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CREEP
+  m_text: SNEAK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e21297efe8aaf494cb1791b2b1aa94fd, type: 2}
   m_sharedMaterial: {fileID: -2847293975174076408, guid: e21297efe8aaf494cb1791b2b1aa94fd, type: 2}
@@ -4264,7 +4264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1690891166
 RectTransform:
   m_ObjectHideFlags: 0
